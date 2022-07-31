@@ -45,6 +45,8 @@
 .horizontal-box {
   display: -webkit-box;
   max-width: 100%;
+  display: -ms-flexbox;
+  display: flex;
 }
 .yellow-box,
 .blue-box,
