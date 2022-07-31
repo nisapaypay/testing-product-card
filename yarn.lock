@@ -1259,10 +1259,10 @@ normalize-package-data@^4.0.0:
     semver "^7.3.5"
     validate-npm-package-license "^3.0.4"
 
-np-product-card@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/np-product-card/-/np-product-card-0.0.1.tgz#af94c5932701e674afe33820ed182fa903b135c2"
-  integrity sha512-RsiMKDlnc1PngsDXaB0MKQ0PYTrjC+kfnz1buVOFLbAAJNfyINkN0d/dbPVpy1F/wENo8jxlP5KnPFM2PGqfRQ==
+np-product-card@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/np-product-card/-/np-product-card-0.0.2.tgz#472a5756ef05947e3b8b8feacb1a96ad9c2cfac0"
+  integrity sha512-jjwJuFwODC8blu4YJPluv1oodmrM85KrhRxH27maX5GBm6ecLWikMoC+hETTPmAv1qilQ82NIGYA0rCy8v2xYg==
   dependencies:
     vue "^3.2.37"
 

@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "i": "^0.3.7",
-    "np-product-card": "^0.0.1",
+    "np-product-card": "^0.0.2",
     "npm": "^8.15.1",
     "vue": "^3.2.37"
   },
