@@ -1,16 +1,24 @@
 <script setup>
-import { ProductCard } from 'np-product-card'
-import 'np-product-card/styles.css'
-
+import { ProductCard } from "np-product-card";
+import "np-product-card/styles.css";
 </script>
 <template>
   <div class="product-slider" ref="slider">
     <div class="product-slider__inner" ref="inner" :style="innerStyles">
-      <product-card v-for="(item, index) in productSlider" :key="index" :type="item.type" :size="item.size" />
+      <product-card
+        v-for="(item, index) in productSlider"
+        :key="index"
+        :type="item.type"
+        :size="item.size"
+      />
     </div>
   </div>
-  <button v-if="showPrev" type="button" class="arrow-prev" @click="productPrev">&lsaquo;</button>
-  <button v-if="showNext" type="button" class="arrow-next" @click="productNext">&rsaquo;</button>
+  <button v-if="showPrev" type="button" class="arrow-prev" @click="productPrev">
+    &lsaquo;
+  </button>
+  <button v-if="showNext" type="button" class="arrow-next" @click="productNext">
+    &rsaquo;
+  </button>
 </template>
 
 <style scoped>
@@ -18,14 +26,12 @@ import 'np-product-card/styles.css'
   width: 100%;
   position: relative;
   overflow: hidden;
-
 }
 .product-slider__inner {
   display: flex;
   align-items: start;
   transition: transform 0.2s;
   white-space: nowrap;
-
 }
 .arrow-prev,
 .arrow-next {
@@ -60,91 +66,108 @@ import 'np-product-card/styles.css'
 .arrow-next {
   right: -20px;
 }
-@media(max-width: 768px) {
-  .product-slider__inner {
-    overflow: auto;
-    transform: none !important;
-  }
+@media (max-width: 768px) {
   .arrow-next,
   .arrow-prev {
-    display: none;
+    font-size: 20px;
+    width: 25px;
+    height: 25px;
+    margin-top: -25px;
+  }
+  .arrow-prev {
+    left: -12px;
+  }
+  .arrow-next {
+    right: -12px;
   }
 }
 </style>
 
 <script scoped>
 export default {
-    data(){
-    return{
+  data() {
+    return {
       //state
       scrollAmount: 0,
       showPrev: false,
       showNext: true,
-      innerStyles: '',
+      innerStyles: "",
       scTimer: 0,
       scY: 0,
       //productSlider data
-      productSlider: [{
-        size: '',
-        type: ''
-      }, {
-        size: '',
-        type: 'disabled'
-      }, {
-        size: '',
-        type: ''
-      }, {
-        size: '',
-        type: ''
-      }, {
-        size: '',
-        type: 'disabled'
-      }, {
-        size: '',
-        type: ''
-      }, {
-        size: '',
-        type: ''
-      }, {
-        size: 'small',
-        type: ''
-      }]
-    }
+      productSlider: [
+        {
+          size: "",
+          type: "",
+        },
+        {
+          size: "",
+          type: "disabled",
+        },
+        {
+          size: "",
+          type: "",
+        },
+        {
+          size: "",
+          type: "",
+        },
+        {
+          size: "",
+          type: "disabled",
+        },
+        {
+          size: "",
+          type: "",
+        },
+        {
+          size: "",
+          type: "",
+        },
+        {
+          size: "small",
+          type: "",
+        },
+      ],
+    };
   },
   mounted() {
-    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener("scroll", this.handleScroll);
   },
   methods: {
     productNext: function () {
-      this.showPrev = true
-      const inner = this.$refs.inner
-      const newScrollLeft = inner.scrollLeft
-      const width = inner.clientWidth
-      const scrollWidth = inner.scrollWidth
-      this.scrollAmount += 30
+      this.showPrev = true;
+      const inner = this.$refs.inner;
+      const newScrollLeft = inner.scrollLeft;
+      const width = inner.clientWidth;
+      const scrollWidth = inner.scrollWidth;
+      this.scrollAmount += 30;
 
       this.innerStyles = {
-        transform: `translateX(-${this.scrollAmount}px)`
-      }
+        transform: `translateX(-${this.scrollAmount}px)`,
+      };
 
       if (scrollWidth - width < this.scrollAmount) {
-        this.showNext = false
+        this.showNext = false;
+        this.innerStyles = {
+          transform: `translateX(-${scrollWidth - width}px)`,
+        };
       }
     },
     productPrev: function () {
-      this.showNext = true
-      const inner = this.$refs.inner
-      const newScrollLeft = inner.scrollLeft
-      const width = inner.clientWidth
-      const scrollWidth = inner.scrollWidth
-      this.scrollAmount -= 30
+      this.showNext = true;
+      const inner = this.$refs.inner;
+      const newScrollLeft = inner.scrollLeft;
+      const width = inner.clientWidth;
+      const scrollWidth = inner.scrollWidth;
+      this.scrollAmount -= 30;
 
       this.innerStyles = {
-        transform: `translateX(-${this.scrollAmount}px)`
-      }
+        transform: `translateX(-${this.scrollAmount}px)`,
+      };
 
       if (this.scrollAmount <= 0) {
-        this.showPrev = false
+        this.showPrev = false;
       }
     },
     handleScroll: function () {
@@ -154,7 +177,7 @@ export default {
         clearTimeout(this.scTimer);
         this.scTimer = 0;
       }, 100);
-    }
-  }
-}
+    },
+  },
+};
 </script>
