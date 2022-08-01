@@ -1,6 +1,3 @@
-<script setup>
-  import { ref } from 'vue'
-</script>
 <template>
   <footer class="footer-area">
     <div class="container">
